@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Modxplorer</title>
+        <meta charset="utf-8">
+
+        {% load static %}
+        <link href="{% static 'images/favicon.ico' %}" rel="favicon" type="image/x-icon">
+    </head>
+
+    <body>
+        <header>
+            Header
+        </header>
+
+        <a href="{% url 'polls:index' %}">Polls</a>
+
+        <footer>
+            Footer
+        </footer>
+    </body>
+</html>

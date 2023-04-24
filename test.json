@@ -1,0 +1,62 @@
+{
+    "name": "Skyrim 1488",
+    "contents": [
+        {
+            "name": "Armor",
+            "contents": [
+                {
+                    "name": "Queen Marika's dress",
+                    "link": "https://www.nexusmods.com/skyrimspecialedition/mods/83261",
+                    "how_to_get": "Craft",
+                    "__class__": "SkyrimArmorMod"
+                },
+                {
+                    "name": "EGIL Demon Hunter II Templar 3BA",
+                    "link": "https://www.nexusmods.com/skyrimspecialedition/mods/81705",
+                    "how_to_get": "Shrine of Meridia",
+                    "__class__": "SkyrimArmorMod"
+                },
+                {
+                    "name": "COCO",
+                    "contents": [
+                        {
+                            "name": "COCO 2B Wedding Outfit - CBBE-TBD-BHUNP SE",
+                            "link": "https://www.nexusmods.com/skyrimspecialedition/mods/26419",
+                            "how_to_get": "Craft (Elven+)",
+                            "__class__": "SkyrimArmorMod"
+                        },
+                        {
+                            "name": "COCO Lingerie - CBBE-TBD-BHUNP SE",
+                            "link": "https://www.nexusmods.com/skyrimspecialedition/mods/39132",
+                            "how_to_get": "Craft (Elven+)",
+                            "__class__": "SkyrimArmorMod"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Followers",
+            "contents": [
+                {
+                    "name": "Roxy Follower",
+                    "link": "https://www.nexusmods.com/skyrimspecialedition/mods/82110",
+                    "location": "The Sleeping Giant Inn, Riverwood",
+                    "__class__": "SkyrimFollowerMod"
+                },
+                {
+                    "name": "Daegon - Standalone Custom Fully Voiced High Elf Follower",
+                    "link": "https://www.nexusmods.com/skyrimspecialedition/mods/78745",
+                    "location": "Riverwood",
+                    "__class__": "SkyrimFollowerMod"
+                }
+            ]
+        },
+        {
+            "name": "ConsolePlusPlus",
+            "link": "https://www.nexusmods.com/skyrimspecialedition/mods/79975",
+            "__class__": "Mod"
+        }
+    ],
+    "description": "The best modpack EVER"
+}
