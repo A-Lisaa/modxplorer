@@ -1,0 +1,34 @@
+body {
+    background-color: var(--body-background);
+
+    margin: auto;
+}
+
+#header {
+    background-color: var(--header-background);
+
+    min-height: 5vh;
+}
+
+#left {
+
+}
+
+#center {
+
+}
+
+#right {
+
+}
+
+#footer {
+    background-color: var(--footer-background);
+
+    position: relative;
+    min-height: 5vh;
+}
+
+#content {
+    min-height: 90vh;
+}

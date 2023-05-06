@@ -14,12 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.shortcuts import redirect
 from django.urls import include, path
 
 from . import views
 
 urlpatterns = [
-    path('polls/', include('polls.urls')),
+    path("", views.index, name='index'),
     path('admin/', admin.site.urls),
-    path("", views.index, name='index')
+    path('modpack/', include('explorer.urls')),
+    path("index/", lambda _: redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ"), name='true-index')
 ]

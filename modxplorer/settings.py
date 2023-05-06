@@ -32,13 +32,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_bootstrap5',
+    'rest_framework',
+
+    'explorer.apps.ExplorerConfig',
 ]
 
 MIDDLEWARE = [

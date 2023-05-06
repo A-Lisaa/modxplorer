@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{modpack.name}}{% endblock %}
+
+{% block content %}
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-2">
+        <button id="create-mod" class="btn btn-primary mb-2" type="button" name="button">Create mod</button>
+
+        {% include 'explorer/mods.html' %}
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src={% static 'js/bootstrap5.modal.forms.min.js' %}></script>
+    <script type="text/javascript">
+        function foo() {
+            document.addEventListener(
+                'DOMContentLoaded',
+                (e) => {
+                    modalForm(
+                        document.getElementById('create-mod'),
+                        {
+                            formURL: "{% url 'modpack:create-mod' %}",
+                            asyncUpdate: true,
+                            asyncSettings: {
+                                closeOnSubmit: true,
+                                successMessage: "Mod created successfully",
+                                dataUrl: "{% url 'modpack:mods' %}",
+                                dataElementId: "#mods-list",
+                                dataKey: "list",
+                                addModalFormFunction: foo
+                            }
+                        }
+                    );
+                }
+            );
+        }
+        foo();
+
+        {% comment %} $(function () {
+            console.log($("#create-mod"));
+            console.log(modalForm);
+            $("#create-mod").modalForm({
+                formURL: "{% url 'modpack:create-mod' %}"
+            });
+        }); {% endcomment %}
+    </script>
+{% endblock extra_scripts %}

@@ -1,0 +1,27 @@
+{% extends 'django_bootstrap5/bootstrap5.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block bootstrap5_title %}
+    {% block title %}{% endblock %}
+{% endblock %}
+
+{% block bootstrap5_extra_head %}
+    {% block extra_head %}{% endblock extra_head %}
+{% endblock bootstrap5_extra_head %}
+
+{% block bootstrap5_before_content %}
+    {% block before_content %}{% endblock before_content %}
+{% endblock bootstrap5_before_content %}
+
+{% block bootstrap5_content %}
+    {% block content %}{% endblock content %}
+{% endblock bootstrap5_content %}
+
+{% block bootstrap5_after_content %}
+    {% block after_content %}{% endblock after_content %}
+{% endblock bootstrap5_after_content %}
+
+{% block bootstrap5_extra_script %}
+    {% block extra_scripts %}{% endblock extra_scripts %}
+{% endblock bootstrap5_extra_script %}
