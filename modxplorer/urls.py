@@ -21,8 +21,10 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path("", views.index, name='index'),
+    path("", views.home, name='home'),
     path('admin/', admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/register/", views.register, name='register'),
     path('modpack/', include('explorer.urls')),
-    path("index/", lambda _: redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ"), name='true-index')
+    path("rr/", lambda _: redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ"))
 ]

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block title %}Log in{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid pt-3">
+        {% if next %}
+            <div class="alert alert-danger" role="alert">
+                Please login to see this page.
+            </div>
+        {% endif %}
+
+        <form method="post" action={% url 'login' %}>
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <p><a href="{% url 'password_reset' %}">Reset password</a></p>
+            {% bootstrap_button button_type="submit" content="Log in" %}
+        </form>
+
+        <p class="mt-2"><a href="{% url 'register' %}">Register</a></p>
+    </div>
+{% endblock content %}

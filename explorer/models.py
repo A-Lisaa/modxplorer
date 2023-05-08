@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 
@@ -7,14 +9,14 @@ class Tag(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
-def get_uncategorised_category() -> Category:
-    return Category.objects.get_or_create(name="Uncategorized")[0]
-
 class Folder(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(max_length=65535)
     folders = models.ManyToManyField("self")
     mods = models.ManyToManyField("Mod")
+
+def get_uncategorised_category() -> Category:
+    return Category.objects.get_or_create(name="Uncategorized")[0]
 
 class Mod(models.Model):
     link = models.URLField()
@@ -33,3 +35,4 @@ class Mod(models.Model):
 
 class Modpack(Folder):
     ...
+    #id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

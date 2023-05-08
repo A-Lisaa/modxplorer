@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'modpack'
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.index, name="home"),
     path("mods/", views.mods, name="mods"),
     path("create/", views.ModCreateView.as_view(), name="create-mod")
     # path("add-mod", views.add_mod, name="add-mod")
