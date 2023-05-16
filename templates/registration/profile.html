@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <p class="text-primary">
+            Username: {{user.username}}<br>
+            First name: {{user.first_name}}<br>
+            Last name: {{user.last_name}}<br>
+            Email: {{user.email}}<br>
+        </p>
+    </div>
+{% endblock content %}

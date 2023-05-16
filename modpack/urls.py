@@ -4,9 +4,10 @@ from . import views
 
 app_name = 'modpack'
 urlpatterns = [
-    path("", views.index, name="home"),
+    path("", views.home, name="home"),
     path("mods/", views.mods, name="mods"),
-    path("create/", views.ModCreateView.as_view(), name="create-mod")
+    path("create-mod/", views.ModCreateView.as_view(), name="create-mod"),
+    path("create-modpack/", views.ModpackCreateView.as_view(), name="create-modpack")
     # path("add-mod", views.add_mod, name="add-mod")
     # path("tag/create/", views.TagCreateView.as_view(), name="tag-create"),
     # path("tag/<int:pk>/", views.TagUpdateView.as_view(), name="tag-update"),

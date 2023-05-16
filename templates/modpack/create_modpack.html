@@ -1,15 +1,16 @@
-<form method="post" action="">
-    {% csrf_token %}
+{% load django_bootstrap5 %}
 
+<form method="post">
+    {% csrf_token %}
     <div class="modal-header">
         <h4 class="modal-title">
-            Add Mod
+            Create modpack
         </h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
     </div>
 
     <div class="modal-body">
-        {% include 'form.html' %}
+        {% bootstrap_form form %}
     </div>
 
     <div class="modal-footer">

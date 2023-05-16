@@ -7,9 +7,9 @@ from . import models
 class ModModelForm(BSModalModelForm):
     class Meta:
         model = models.Mod
-        fields = ["link", "name", "description"]
+        fields = ["link", "name", "description", "category", "tags"]
 
-class ModForm(forms.ModelForm):
+class ModpackModelForm(BSModalModelForm):
     class Meta:
-        model = models.Mod
-        fields = ["link", "name", "description"]
+        model = models.Modpack
+        fields = ["name", "description"]

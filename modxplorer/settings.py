@@ -34,6 +34,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #"daphne",
+    "accounts",
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +47,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'rest_framework',
 
-    'explorer.apps.ExplorerConfig',
+    'modpack.apps.ModpackConfig',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'modxplorer.wsgi.application'
+#ASGI_APPLICATION = "modxplorer.asgi.application"
 
 
 # Database
