@@ -1,5 +1,29 @@
 {% extends "base.html" %}
 
+{% block title %}Modxplorer{% endblock title %}
+
 {% block content %}
-<a href="{% url 'modpack:home' %}">Modpack</a>
+    {% if user.is_authenticated %}
+        <div class="ps-2 pt-2">
+            Your modpacks:
+            <ul id="modpacks-list" class="list-group">
+            </ul>
+        </div>
+    {% else %}
+        <div class="container-fluid mt-2">
+            You are not authenticated, please login to view your modpacks
+        </div>
+    {% endif %}
 {% endblock %}
+
+{% block extra_scripts %}
+    <script type="text/javascript">
+        function fillModpacks() {
+            fetch("{% url 'modpack:current-user-modpacks' %}")
+                .then(response => response.json())
+                .then(data => document.getElementById("modpacks-list").innerHTML = data["modpacks"]);
+        }
+
+        window.addEventListener("load", fillModpacks);
+    </script>
+{% endblock extra_scripts %}

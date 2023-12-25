@@ -1,0 +1,10 @@
+{% for modpack in modpacks %}
+    <a
+        class="list-group-item btn btn-outline-secondary my-auto flex-fill"
+        style="text-align: left; border-radius: 0px;"
+        type="button"
+        href="{% url "modpack:home" modpack.pk %}"
+    >
+        {{modpack.name}}
+    </a>
+{% endfor %}

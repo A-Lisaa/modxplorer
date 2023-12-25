@@ -1,0 +1,6 @@
+{% for folder in folders %}
+    {% include "modpack/folder.html" with folder=folder %}
+{% endfor %}
+{% for mod in mods %}
+    {% include "modpack/mod.html" with mod=mod %}
+{% endfor %}

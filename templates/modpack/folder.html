@@ -1,0 +1,25 @@
+<div class="d-flex">
+    <button
+        class="folder list-group-item btn btn-outline-secondary my-auto flex-fill"
+        style="text-align: left; border-radius: 0px;"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#folder-{{folder.id}}-subelements"
+        aria-expanded="false"
+        aria-controls="folder-{{folder.id}}-subelements"
+    >
+        {{folder.name}}
+    </button>
+    <div class="ps-2">
+        <button class="folder-create-mod-btn btn btn-primary" form-url="{% url 'modpack:create-mod' 'Folder' folder.pk %}">Add mod</button>
+        <button class="folder-create-folder-btn btn btn-primary" form-url="{% url 'modpack:create-folder' 'Folder' folder.pk %}">Add folder</button>
+    </div>
+</div>
+<div id="folder-{{folder.id}}-subelements" class="folder-subelements collapse ms-3 my-1">
+    {% for subfolder in folder.subfolders.all %}
+        {% include "modpack/folder.html" with folder=subfolder %}
+    {% endfor %}
+    {% for submod in folder.submods.all %}
+        {% include "modpack/mod.html" with mod=submod %}
+    {% endfor %}
+</div>

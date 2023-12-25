@@ -2,59 +2,75 @@
 
 {% load static %}
 
-{% block title %}
-    {% if modpack %}
-        {{modpack.name}}
-    {% else %}
-        Modpack
-    {% endif %}
-{% endblock %}
+{% block title %}{{modpack.name}}{% endblock %}
 
 {% block extra_head %}
-    <script src={% static 'js/bootstrap5.modal.forms.min.js' %}></script>
+    {{ block.super }}
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js" defer></script>
+    <script src={% static 'js/modpack.js' %} defer></script>
+    <script src={% static 'js/collapsibles.js' %} defer></script>
 {% endblock extra_head %}
 
 {% block content %}
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content"></div>
+    <div class="container-fluid mt-2 d-flex">
+        <div class="flex-fill me-2">
+            <button id="modpack-create-mod-btn" class="btn btn-primary mb-2 me-2" type="button" name="button">Add mod to root</button>
+            <button id="modpack-create-folder-btn" class="btn btn-primary mb-2 me-2" type="button" name="button">Add folder to root</button>
+
+            <ul id="content-list" class="list-group">
+                {% include 'modpack/content.html' with folders=modpack.subfolders.all mods=modpack.submods.all %}
+            </ul>
         </div>
     </div>
-
-    <div class="container-fluid mt-2">
-        {% if modpack %}
-            <button id="create-mod" class="btn btn-primary mb-2" type="button" name="button">Create mod</button>
-            <script type="text/javascript">
-                modalForm(
-                    document.getElementById('create-mod'),
-                    {
-                        formURL: "{% url 'modpack:create-mod' %}",
-                        asyncUpdate: true,
-                        asyncSettings: {
-                            closeOnSubmit: true,
-                            dataUrl: "{% url 'modpack:mods' %}",
-                            dataElementId: "#mods-list",
-                            dataKey: "list",
-                            addModalFormFunction: createMod
-                        }
-                    }
-                );
-            </script>
-
-            <a id="change-id" href="{% url 'modpack:home' %}?id=1" class="btn btn-primary mb-2" type="button">id = 1</a>
-
-            {% include 'modpack/mods.html' %}
-        {% else %}
-            <button id="create-modpack" class="btn btn-primary" type="button">Create modpack</button>
-
-            <script type="text/javascript">
-                modalForm(
-                    document.getElementById('create-modpack'),
-                    {
-                        formURL: "{% url 'modpack:create-modpack' %}",
-                    }
-                );
-            </script>
-        {% endif %}
-    </div>
 {% endblock %}
+
+{% block extra_scripts %}
+    <script type="text/javascript">
+        function reinstantiateModals() {
+            const contentUrl = "{% url 'modpack:content' modpack.pk %}"
+
+            let modpackCreateModBtn = document.getElementById('modpack-create-mod-btn');
+            if (modpackCreateModBtn) {
+                createModpackAsyncModalForm(
+                    modpackCreateModBtn,
+                    "{% url 'modpack:create-mod' 'Modpack' modpack.pk %}",
+                    contentUrl,
+                    reinstantiateModals
+                );
+            }
+            let modpackCreateFolderBtn = document.getElementById('modpack-create-folder-btn');
+            if (modpackCreateFolderBtn) {
+                createModpackAsyncModalForm(
+                    modpackCreateFolderBtn,
+                    "{% url 'modpack:create-folder' 'Modpack' modpack.pk %}",
+                    contentUrl,
+                    reinstantiateModals
+                );
+            }
+
+            createModpackAsyncModalForms(
+                [...document.getElementsByClassName("mod-create-mod-btn")],
+                contentUrl,
+                reinstantiateModals
+            );
+            createModpackAsyncModalForms(
+                [...document.getElementsByClassName("mod-create-folder-btn")],
+                contentUrl,
+                reinstantiateModals
+            );
+            createModpackAsyncModalForms(
+                [...document.getElementsByClassName("folder-create-mod-btn")],
+                contentUrl,
+                reinstantiateModals
+            );
+            createModpackAsyncModalForms(
+                [...document.getElementsByClassName("folder-create-folder-btn")],
+                contentUrl,
+                reinstantiateModals
+            );
+        }
+        window.addEventListener("load", () => {
+            reinstantiateModals();
+        });
+    </script>
+{% endblock extra_scripts %}

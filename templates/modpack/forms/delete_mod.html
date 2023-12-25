@@ -1,0 +1,9 @@
+{% extends 'modal_form.html' %}
+
+{% block title %}Delete mod{% endblock title %}
+{% block extra_body %}
+    <p>
+        Are you sure you want to delete mod with title<strong>{{ mod.name }}</strong>?
+    </p>
+{% endblock extra_body %}
+{% block submit_btn_text %}Delete{% endblock submit_btn_text %}

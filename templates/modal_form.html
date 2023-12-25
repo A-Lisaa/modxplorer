@@ -4,16 +4,17 @@
     {% csrf_token %}
     <div class="modal-header">
         <h4 class="modal-title">
-            Create modpack
+            {% block title %}(No title){% endblock title %}
         </h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
     </div>
 
     <div class="modal-body">
         {% bootstrap_form form %}
+        {% block extra_body %}{% endblock extra_body %}
     </div>
 
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">{% block submit_btn_text %}Submit{% endblock submit_btn_text %}</button>
     </div>
 </form>
